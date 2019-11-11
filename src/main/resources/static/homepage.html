@@ -1,0 +1,65 @@
+<html>
+<head>
+    <script src="./jquery-3.4.1.min.js">  </script>
+
+    <script type="text/javascript">
+        var baseUrl = "http://localhost:8888/";
+        var columnHeadNames = ['Title', 'Customer Logo', 'Link'];
+
+        function renderTableHead(columnHeadNames) {
+            var head = '<thead><tr>';
+            for (var i=0, length=columnHeadNames.length; i<length; i++) {
+                head += '<th>' + columnHeadNames[i] + '</th>';
+            }
+            head += '</tr></thead>';
+            return head;
+        }
+
+        function renderTableBody(data) {
+            var body = '<tbody>';
+            for (var i=0, length=data.length; i<length; i++) {
+                body += '<tr>';
+                body += '<td>' + data[i].label + '</td>';
+                body += '<td><img height="74px" src="' + data[i].featuredImage + '" /></td>';
+                body += '<td align="center" width="10%"><a href="' + data[i].url + '">Link</a></td>';
+                body += '</tr>';
+            }
+            body += '</tbody>';
+            return body;
+        }
+
+        function renderTable(headNames, bodyData) {
+            var table = '<table border="1px">' + renderTableHead(headNames) + renderTableBody(bodyData) + '</table>';
+            return table;
+        }
+
+        function getPostListing () {
+            $.get(baseUrl + "post-list", function(data){
+                $('#post-list-table').append($(renderTable(columnHeadNames, data)));
+            }, "json");
+        }
+
+        function getWelcomeMsg() {
+            $.get(baseUrl + "welcome-msg",  function (data) {
+                $('#welcome-msg').append(data);
+            });
+        }
+
+        $(document).ready(function(){
+            getWelcomeMsg();
+            getPostListing();
+            });
+    </script>
+
+</head>
+<body>
+<h1 id="welcome-msg" align="center">
+
+</h1>
+
+<div id="post-list-table" align="center">
+
+</div>
+
+</body>
+</html>
