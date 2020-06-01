@@ -11,6 +11,7 @@
     <mask>*.xml</mask>
     <mask>polyaire*</mask>
     <mask>*.sql</mask>
+    <mask>*.js</mask>
     <mask>*.java</mask>
   </component>
 </application>
