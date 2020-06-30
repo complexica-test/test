@@ -10,9 +10,9 @@
     <mask>*.properties</mask>
     <mask>*.xml</mask>
     <mask>polyaire*</mask>
-    <mask>*.jsx</mask>
     <mask>*.sql</mask>
     <mask>*.js</mask>
+    <mask>*.jsx</mask>
     <mask>*.java</mask>
   </component>
 </application>
