@@ -3,8 +3,7 @@
     <option name="customScope" value="All Places" />
     <option name="defaultScopeName" value="All Places" />
     <option name="SEARCH_SCOPE" value="All Places" />
-    <option name="FILE_MASK" value="*.jsx,*.js" />
-    <mask>*.css</mask>
+    <option name="FILE_MASK" value="*.css" />
     <mask>*.html</mask>
     <mask>*.jsp</mask>
     <mask>polyaire*</mask>
@@ -15,5 +14,6 @@
     <mask>*.jsx</mask>
     <mask>*.js</mask>
     <mask>*.jsx,*.js</mask>
+    <mask>*.css</mask>
   </component>
 </application>
