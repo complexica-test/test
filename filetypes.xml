@@ -1,6 +1,7 @@
 <application>
   <component name="FileTypeManager" version="17">
     <extensionMap>
+      <mapping ext="template" type="JSON" />
       <mapping pattern="authorized_keys" type="PLAIN_TEXT" />
       <mapping pattern=".env.config.prod" type="PLAIN_TEXT" />
       <mapping pattern=".env.config.staging" type="PLAIN_TEXT" />
