@@ -6,7 +6,6 @@
     <mask>*.html</mask>
     <mask>*.jsp</mask>
     <mask>polyaire*</mask>
-    <mask>*.xml</mask>
     <mask>*.css</mask>
     <mask>*.js</mask>
     <mask>*.jsx</mask>
@@ -16,5 +15,6 @@
     <mask>*.properties</mask>
     <mask>*.jsx,*.js</mask>
     <mask>*.java</mask>
+    <mask>*.xml</mask>
   </component>
 </application>
