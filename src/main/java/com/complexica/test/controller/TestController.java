@@ -1,24 +1,25 @@
 package com.complexica.test.controller;
 
+import com.complexica.test.model.NameEntity;
+import com.complexica.test.service.NameService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class TestController {
     @Autowired
     private RestTemplate restTemplate;
     @Autowired
-    private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+    private NameService nameService;
 
     @RequestMapping("/")
     public ModelAndView homePage(){
@@ -38,12 +39,11 @@ public class TestController {
     @RequestMapping("/welcome-msg")
     @ResponseBody
     public ResponseEntity<?> getWelcomeMsg(){
-        final String sql = "select name from test";
-        final List<String> queryResult = namedParameterJdbcTemplate.queryForList(sql, new HashMap<>(0), String.class);
-        if ( queryResult.size() == 0) {
-            return ResponseEntity.ok("No welcome message");
+        final List<NameEntity> names = nameService.findAllNames();
+        if (CollectionUtils.isEmpty(names)) {
+            return ResponseEntity.ok("No names found");
         }
-        return ResponseEntity.ok(String.join(", ", queryResult));
+        return ResponseEntity.ok(names.parallelStream().map(n -> n.getName()).collect(Collectors.joining(" and ")));
     }
 
 

@@ -3,12 +3,12 @@
     <script src="./jquery-3.4.1.min.js">  </script>
 
     <script type="text/javascript">
-        var baseUrl = "http://localhost:8888/";
-        var columnHeadNames = ['Title', 'Customer Logo', 'Link'];
+        const baseUrl = "http://localhost:8080/";
+        const columnHeadNames = ['Title', 'Customer Logo', 'Link'];
 
         function renderTableHead(columnHeadNames) {
-            var head = '<thead><tr>';
-            for (var i=0, length=columnHeadNames.length; i<length; i++) {
+            let head = '<thead><tr>';
+            for (let i=0, length=columnHeadNames.length; i<length; i++) {
                 head += '<th>' + columnHeadNames[i] + '</th>';
             }
             head += '</tr></thead>';
@@ -16,8 +16,8 @@
         }
 
         function renderTableBody(data) {
-            var body = '<tbody>';
-            for (var i=0, length=data.length; i<length; i++) {
+            let body = '<tbody>';
+            for (let i=0, length=data.length; i<length; i++) {
                 body += '<tr>';
                 body += '<td>' + data[i].label + '</td>';
                 body += '<td><img height="74px" src="' + data[i].featuredImage + '" /></td>';
@@ -29,7 +29,7 @@
         }
 
         function renderTable(headNames, bodyData) {
-            var table = '<table border="1px">' + renderTableHead(headNames) + renderTableBody(bodyData) + '</table>';
+            let table = '<table border="1px">' + renderTableHead(headNames) + renderTableBody(bodyData) + '</table>';
             return table;
         }
 
@@ -41,7 +41,7 @@
 
         function getWelcomeMsg() {
             $.get(baseUrl + "welcome-msg",  function (data) {
-                $('#welcome-msg').append(data);
+                $('#welcome-msg').append("Hello, " + data);
             });
         }
 
